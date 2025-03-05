@@ -34,9 +34,6 @@ This project is a User Authentication System built using the MERN stack (MongoDB
 - **Frontend**: 
   - React.js
   - Vite
-- **Others**: 
-  - dotenv (for environment variables)
-  - ESLint (for code linting)
 
 ## Installation Instructions
 1. **Clone the repository**:
