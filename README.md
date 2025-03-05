@@ -86,7 +86,7 @@ This project is a User Authentication System built using the MERN stack (MongoDB
    npm run dev
    ```
 
-3. **Access the application in your browser** at `http://localhost:5173`.
+3. **Access the application in your browser** at Client Base Url.
 
 ## API Endpoints
 - **POST /api/auth/register**: User registration with email and password.
@@ -99,4 +99,4 @@ This project is a User Authentication System built using the MERN stack (MongoDB
 - To change a user's role to **admin**, you must manually edit the user's role in the MongoDB database.
 
 ## Deployment
-- The application is deployed on Vercel. You can access it at the following URL: [Vercel Deployment Link](<your-vercel-deployment-url>).
+- The application is deployed on Vercel. You can access it at the following URL: [Vercel Deployment Link](https://udaan-assignment.ranbirsingh.xyz/).
