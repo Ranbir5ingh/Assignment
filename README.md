@@ -54,15 +54,17 @@ This project is a User Authentication System built using the MERN stack (MongoDB
 3. **Set up environment variables**:
    - Create a `.env` file in the `server/` directory and add the following:
      ```
-     MONGO_URL=mongodb+srv://<username>:<password>@assignment.chhqq.mongodb.net/
-     PORT=5000
-     CLIENT_BASE_URL=http://localhost:5173
-     JWT_SECRET_KEY=JWT_SECRET_KEY
+     MONGO_URL=<MongoDB connection string with username and password>
+     PORT=<Port number for the server (default is 5000)>
+     CLIENT_BASE_URL=<Base URL for the client application>
+     JWT_SECRET_KEY=<Secret key for JWT token generation>
+
      ```
 
    - Create a `.env` file in the `client/` directory and add the following:
      ```
-     VITE_API_URL=http://localhost:5000
+     VITE_API_URL=<Base URL for the backend API>
+
      ```
 
 4. **Navigate to the client directory and install dependencies**:
