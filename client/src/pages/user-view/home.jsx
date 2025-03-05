@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className='container p-4 h-[92vh]'>
       <h1 className="text-2xl font-light">
-      {`Hello ${user?.userName}`} 
+      {`Hello ${user?.userName} (${user?.role})`} 
       </h1>
     </div>
   )
