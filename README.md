@@ -102,4 +102,4 @@ For testing purposes, you can use the following credentials to log in as an admi
 - To change a user's role to **admin**, you must manually edit the user's role in the MongoDB database.
 
 ## Deployment
-- The application is deployed on Vercel. You can access it at the following URL: [Vercel Deployment Link](https://udaan-assignment.ranbirsingh.xyz/).
+- The application is deployed on Vercel using a free plan. This may result in slower response times or timeout errors when connecting to the backend. If you encounter such issues, please be patient, try reloading the page, and ensure you have a good internet connection. There are no such issues when running the code on your local machine. You can access the deployment at the following URL: [Vercel Deployment Link](https://udaan-assignment.ranbirsingh.xyz/).
