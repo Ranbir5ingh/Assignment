@@ -24,6 +24,12 @@ This project is a User Authentication System built using the MERN stack (MongoDB
 - Admins will have a different admin view that cannot be accessed by users.
 - Admins cannot access the user view.
 
+### Testing Credentials
+For testing purposes, you can use the following credentials to log in as an admin in the Vercel live deployment:
+- Email: `admin@gmail.com`
+- Password: `admin123`
+
+
 ## Technologies Used
 - **Backend**: 
   - Node.js
