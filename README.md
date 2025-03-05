@@ -1,14 +1,14 @@
 # MERN Stack User Authentication System
 
 ## Description
-This project is a User Authentication System built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It implements a JWT-based authentication system that allows users to sign up, log in, and access protected routes. The system includes features such as password hashing, error handling, and input validation.
+This project is a User Authentication System built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It implements a JWT-based authentication system that allows users to register, log in, and access protected routes. The system includes features such as password hashing, error handling, and input validation.
 
 ## Assignment Overview
 ### MERN Stack Intern Assignment
 **Task**: Build a User Authentication System (Backend Focused)
 
 **Requirements**:
-- **User signup**: Implemented with email & password validation.
+- **User registeration**: Implemented with email & password validation.
 - **User login**: JWT token generation upon successful login.
 - **Protected routes**: Only logged-in users can access certain endpoints.
 - **Backend**: Built using Express.js + MongoDB.
@@ -41,8 +41,8 @@ This project is a User Authentication System built using the MERN stack (MongoDB
 ## Installation Instructions
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/Ranbir5ingh/Udaan-Assignment.git
+   cd Udaan-Assignment
    ```
 
 2. **Navigate to the server directory and install dependencies**:
