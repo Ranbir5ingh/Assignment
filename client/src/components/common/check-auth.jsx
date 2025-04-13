@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 
-function CheckAuth({ isAuthenticated, user, children }) {
+function CheckAuth({ isAuthenticated, children }) {
   const location = useLocation();
 
 
@@ -8,19 +8,14 @@ function CheckAuth({ isAuthenticated, user, children }) {
     if (!isAuthenticated) {
       return <Navigate to="/auth/login" />;
     } else {
-      if (user?.role === "admin") {
-        return <Navigate to="/admin/dashboard" />;
-      } else {
-        return <Navigate to="/user/home" />;
-      }
+      return <Navigate to="/dashboard"/>
     }
   }
 
   if (
     !isAuthenticated &&
     !(
-      location.pathname.includes("/login") ||
-      location.pathname.includes("/register")
+      (location.pathname.includes("auth"))
     )
   ) {
     return <Navigate to="/auth/login" />;
@@ -28,30 +23,9 @@ function CheckAuth({ isAuthenticated, user, children }) {
 
   if (
     isAuthenticated &&
-    (location.pathname.includes("/login") ||
-      location.pathname.includes("/register"))
+    (location.pathname.includes("auth"))
   ) {
-    if (user?.role === "admin") {
-      return <Navigate to="/admin/dashboard" />;
-    } else {
-      return <Navigate to="/user/home" />;
-    }
-  }
-
-  if (
-    isAuthenticated &&
-    user?.role !== "admin" &&
-    location.pathname.includes("admin")
-  ) {
-    return <Navigate to="/unauth-page" />;
-  }
-
-  if (
-    isAuthenticated &&
-    user?.role === "admin" &&
-    location.pathname.includes("user")
-  ) {
-    return <Navigate to="/admin/dashboard" />;
+    return <Navigate to='/dashboard'/>
   }
 
   return <>{children}</>;
