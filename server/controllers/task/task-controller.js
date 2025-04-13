@@ -104,7 +104,6 @@ const updateTask = async (req, res) => {
   const { userId, taskId, title, completed } = req.body;
 
   try {
-    // Find the task
     let task = await Task.findOne({
       _id: taskId,
       user: userId,
@@ -116,13 +115,11 @@ const updateTask = async (req, res) => {
         message: "Task not found!",
       });
 
-    // Update fields if provided
     if (title !== undefined) task.title = title;
     if (completed !== undefined) task.completed = completed;
 
     await task.save();
 
-    // Get updated tasks
     const tasks = await Task.find({ user: userId }).sort({ createdAt: -1 });
 
     res.status(200).json({
