@@ -68,7 +68,6 @@ QuickTask is a task management application that allows users to create, manage, 
 ### Task Management
 - `POST /api/task/add` - Create a new task
 - `GET /api/task/get/:userId` - Get all tasks for a user
-- `GET /api/task/:userId/:taskId` - Get a single task
 - `PUT /api/task/toggle-complete` - Toggle task completion status
 - `PUT /api/task/update` - Update task details
 - `DELETE /api/task/clear-completed/:userId` - Clear all completed tasks
@@ -77,4 +76,4 @@ QuickTask is a task management application that allows users to create, manage, 
 ## Technologies Used
 - Frontend: React, Vite, Redux
 - Backend: Node.js, Express, MongoDB
-- UI Components: shadcn
+- UI Components: shadcn, tailwind css
