@@ -41,6 +41,27 @@ export const fetchTasks = createAsyncThunk(
   }
 );
 
+export const updateTask = createAsyncThunk(
+  "task/updateTask",
+  async ({ userId, taskId, title, completed }, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/task/update`,
+        {
+          userId,
+          taskId,
+          title,
+          completed,
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
 export const deleteTask = createAsyncThunk(
   "task/deleteTask",
   async ({ userId, taskId }, { rejectWithValue }) => {
@@ -138,6 +159,20 @@ const taskSlice = createSlice({
         state.error = null;
       })
       .addCase(toggleCompleteTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.message || "Failed to update task";
+      })
+
+      .addCase(updateTask.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.taskItems = action.payload.data;
+        state.error = null;
+      })
+      .addCase(updateTask.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload.message || "Failed to update task";
       })

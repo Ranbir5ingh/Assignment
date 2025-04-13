@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Plus, Loader2} from "lucide-react";
+import { Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +12,7 @@ import {
   deleteTask,
   toggleCompleteTask,
   clearCompletedTasks,
+  updateTask,
 } from "@/store/task-slice";
 import Header from "@/components/common/header";
 import TaskList from "@/components/task-list";
@@ -116,6 +117,29 @@ const Dashboard = () => {
       })
       .catch((error) => {
         toast.error("Failed to clear completed tasks", {
+          description: error.message || "Something went wrong",
+        });
+      });
+  };
+
+  const handleEditTask = (taskId, newTitle) => {
+    if (!user) return;
+
+    dispatch(
+      updateTask({
+        userId: user.id,
+        taskId,
+        title: newTitle,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("Task updated", {
+          description: "Your task has been updated successfully",
+        });
+      })
+      .catch((error) => {
+        toast.error("Failed to update task", {
           description: error.message || "Something went wrong",
         });
       });
@@ -233,6 +257,7 @@ const Dashboard = () => {
                   tasks={filteredTasks}
                   onToggle={handleToggleComplete}
                   onDelete={handleDeleteTask}
+                  onEdit={handleEditTask}
                   isLoading={isLoading}
                 />
                 {stats.completed > 0 && (
@@ -254,6 +279,7 @@ const Dashboard = () => {
                   tasks={filteredTasks}
                   onToggle={handleToggleComplete}
                   onDelete={handleDeleteTask}
+                  onEdit={handleEditTask}
                   isLoading={isLoading}
                 />
               </TabsContent>
@@ -263,6 +289,7 @@ const Dashboard = () => {
                   tasks={filteredTasks}
                   onToggle={handleToggleComplete}
                   onDelete={handleDeleteTask}
+                  onEdit={handleEditTask}
                   isLoading={isLoading}
                 />
                 {filteredTasks.length > 0 && filter === "completed" && (
