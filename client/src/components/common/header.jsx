@@ -15,7 +15,7 @@ import { toast } from "sonner";
 
 export default function Header() {
   const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logoutUser())
@@ -52,7 +52,7 @@ export default function Header() {
                 <div className="flex items-center gap-2">
                   <Avatar className="h-8 w-8">
                     <AvatarFallback className="text-xs">
-                      {user?.initials}
+                      {user?.userName[0].toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div>
@@ -85,7 +85,7 @@ export default function Header() {
             <DropdownMenuTrigger asChild>
               <Avatar className="cursor-pointer">
                 <AvatarFallback className="bg-primary text-primary-foreground">
-                  {user?.initials}
+                  {user?.userName[0].toUpperCase()}
                 </AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
