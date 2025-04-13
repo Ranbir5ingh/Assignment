@@ -49,7 +49,7 @@ QuickTask is a task management application that allows users to create, manage, 
 1. Start the backend server:
    ```bash
    cd server
-   node server.js
+   npm run dev
    ```
 
 2. Start the frontend application:
