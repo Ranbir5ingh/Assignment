@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import CommonForm from "@/components/common/form";
-import { toast } from "sonner"
 import { registerFormControls } from "@/config";
 import { registerUser } from "@/store/auth-slice";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 
 const initialState = {
   userName: "",
@@ -13,26 +13,45 @@ const initialState = {
 };
 
 function AuthRegister() {
-  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading, error } = useSelector((state) => state.auth);
+  const [formData, setFormData] = useState(initialState);
 
-  function onSubmit(event) {
-    event.preventDefault();
-    if(formData.userName!="" && formData.email!="" && formData.password!=""){
-      dispatch(registerUser(formData)).then((data) => {
-      if (data?.payload?.success) {
-        toast.success(data?.payload?.message);
-        navigate("/auth/login");
-      } else {
-        toast.warning(data?.payload?.message);
-      }
-    });
-    } else{
-      toast.warning("Please fill all fields");
+  useEffect(() => {
+    // Show errors as toasts
+    if (error) {
+      toast.error("Error", {
+        description: error,
+      });
     }
+  }, [error]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     
-  }
+    if (formData.userName.trim() && formData.email.trim() && formData.password.trim()) {
+      dispatch(registerUser(formData))
+        .unwrap()
+        .then((data) => {
+          if (data.success) {
+            toast.success("Registration successful", {
+              description: data.message || "Your account has been created",
+            });
+            navigate("/auth/login");
+          }
+        })
+        .catch((error) => {
+          toast.error("Registration failed", {
+            description: error.message || "Something went wrong",
+          });
+        });
+    } else {
+      toast.warning("Missing information", {
+        description: "Please fill in all required fields",
+      });
+    }
+  };
 
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
@@ -52,10 +71,11 @@ function AuthRegister() {
       </div>
       <CommonForm
         formControls={registerFormControls}
-        buttonText={"Sign Up"}
+        buttonText={isLoading ? "Signing Up..." : "Sign Up"}
         formData={formData}
         setFormData={setFormData}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
+        isLoading={isLoading}
       />
     </div>
   );

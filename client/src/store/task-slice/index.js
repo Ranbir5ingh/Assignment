@@ -129,7 +129,7 @@ const taskSlice = createSlice({
       })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "Failed to fetch tasks";
+        state.error = action.payload.message || "Failed to fetch tasks";
         // Don't clear taskItems on rejection
       })
       
@@ -145,7 +145,7 @@ const taskSlice = createSlice({
       })
       .addCase(toggleCompleteTask.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "Failed to update task";
+        state.error = action.payload.message || "Failed to update task";
         // Don't clear taskItems on rejection
       })
       
@@ -161,7 +161,7 @@ const taskSlice = createSlice({
       })
       .addCase(deleteTask.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "Failed to delete task";
+        state.error = action.payload.message || "Failed to delete task";
         // Don't clear taskItems on rejection
       })
       
@@ -177,7 +177,7 @@ const taskSlice = createSlice({
       })
       .addCase(clearCompletedTasks.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "Failed to clear completed tasks";
+        state.error = action.payload.message || "Failed to clear completed tasks";
         // Don't clear taskItems on rejection
       });
   },

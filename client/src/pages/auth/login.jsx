@@ -1,10 +1,10 @@
-import CommonForm from "@/components/common/form";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import CommonForm from "@/components/common/form";
 import { loginFormControls } from "@/config";
 import { loginUser } from "@/store/auth-slice";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -12,23 +12,43 @@ const initialState = {
 };
 
 function AuthLogin() {
-  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state.auth);
+  const [formData, setFormData] = useState(initialState);
 
-  function onSubmit(event) {
-    event.preventDefault();
-    if (formData.email != "" && formData.password != "") {
-      dispatch(loginUser(formData)).then((data) => {
-        if (data?.payload?.success) {
-          toast.success(data?.payload?.message);
-        } else {
-          toast.warning(data?.payload?.message);
-        }
+  useEffect(() => {
+    // Show errors as toasts
+    if (error) {
+      toast.error("Error", {
+        description: error,
       });
-    } else {
-      toast.warning("Please fill in all fields");
     }
-  }
+  }, [error]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    if (formData.email.trim() && formData.password.trim()) {
+      dispatch(loginUser(formData))
+        .unwrap()
+        .then((data) => {
+          if (data.success) {
+            toast.success("Login successful", {
+              description: data.message || "You have been logged in",
+            });
+          }
+        })
+        .catch((error) => {
+          toast.error("Login failed", {
+            description: error.message || "Something went wrong",
+          });
+        });
+    } else {
+      toast.warning("Missing information", {
+        description: "Please fill in all required fields",
+      });
+    }
+  };
 
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
@@ -48,10 +68,11 @@ function AuthLogin() {
       </div>
       <CommonForm
         formControls={loginFormControls}
-        buttonText={"Sign In"}
+        buttonText={isLoading ? "Signing In..." : "Sign In"}
         formData={formData}
         setFormData={setFormData}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
+        isLoading={isLoading}
       />
     </div>
   );
