@@ -34,9 +34,9 @@ const Toaster = ({ ...props }) => {
           cancelButton:
             "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground font-medium",
         },
+        position: position,
       }}
       {...props}
-      position= {position}
     />
   );
 };

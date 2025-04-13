@@ -8,14 +8,6 @@ export default function TaskList({ tasks, onToggle, onDelete, onEdit, isLoading 
   const [editingTask, setEditingTask] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center py-8">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
   if (tasks.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-8 text-center">

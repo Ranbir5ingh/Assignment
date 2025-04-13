@@ -162,7 +162,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Header/>
+      <Header />
 
       <main className="flex-1 container mx-auto px-4 pt-20 pb-6 md:pt-24 md:pb-8">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
@@ -225,13 +225,8 @@ const Dashboard = () => {
               <Button
                 onClick={handleAddTask}
                 className="mt-2 sm:mt-0 whitespace-nowrap"
-                disabled={isLoading}
               >
-                {isLoading ? (
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                ) : (
-                  <Plus className="h-4 w-4 mr-2" />
-                )}
+                <Plus className="h-4 w-4 mr-2" />
                 Add Task
               </Button>
             </div>
