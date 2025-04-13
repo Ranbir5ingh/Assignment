@@ -17,7 +17,6 @@ function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
-    // Show errors as toasts
     if (error) {
       toast.error("Error", {
         description: error,
@@ -59,7 +58,7 @@ function AuthLogin() {
         <p className="mt-2">
           Don't have an account
           <Link
-            className="font-medium ml-2 text-primary hover:underline"
+            className="font-medium ml-2 text-primary underline"
             to="/auth/register"
           >
             Register

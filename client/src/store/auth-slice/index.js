@@ -97,7 +97,6 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Register User
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -114,8 +113,7 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.error = action.payload.message || "Registration failed";
       })
-      
-      // Login User
+ 
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -132,8 +130,7 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.error = action.payload.message || "Login failed";
       })
-      
-      // Check Auth
+
       .addCase(checkAuth.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -151,7 +148,7 @@ const authSlice = createSlice({
         state.error = action.payload.message || "Authentication check failed";
       })
       
-      // Logout User
+
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -164,8 +161,7 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "Logout failed";
-        // Don't change auth state on failed logout
+        state.error = action.payload.message || "Logout failed";
       });
   },
 });

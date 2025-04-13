@@ -13,8 +13,8 @@ QuickTask is a task management application that allows users to create, manage, 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/quicktask.git
-   cd quicktask
+   git clone https://github.com/Ranbir5ingh/Assignment.git
+   cd assignment
    ```
 
 2. Install dependencies for the frontend:
@@ -32,6 +32,19 @@ QuickTask is a task management application that allows users to create, manage, 
 4. Set up environment variables:
    - Create a `.env` file in both `client` and `server` directories and add the necessary configurations.
 
+   ### Server Environment Variables (server/.env)
+   ```
+   MONGO_URL= your_mongodb_connection_string
+   PORT=server_port (default 5000)
+   CLIENT_BASE_URL=your_client_base_url
+   JWT_SECRET_KEY=your_jwt_secret_key
+   ```
+
+   ### Client Environment Variables (client/.env)
+   ```
+   VITE_API_URL=base_url_for_api_requests (http://localhost:5000)
+   ```
+
 ## Usage
 1. Start the backend server:
    ```bash
@@ -45,7 +58,7 @@ QuickTask is a task management application that allows users to create, manage, 
    npm run dev
    ```
 
-3. Open your browser and navigate to `http://localhost:3000` to access the application.
+3. Open your browser and navigate to your client base url to access the application.
 
 ## API Endpoints
 ### Authentication
