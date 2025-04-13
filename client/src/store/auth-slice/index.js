@@ -145,7 +145,6 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
-        state.error = action.payload.message || "Authentication check failed";
       })
       
 

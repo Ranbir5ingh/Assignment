@@ -165,7 +165,7 @@ const Dashboard = () => {
       <Header/>
 
       <main className="flex-1 container mx-auto px-4 pt-20 pb-6 md:pt-24 md:pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
           <Card>
             <CardHeader className="pb-2 md:pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -192,7 +192,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="sm:col-span-2 md:col-span-1">
+          <Card className="col-span-2 md:col-span-1">
             <CardHeader className="pb-2 md:pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Pending
