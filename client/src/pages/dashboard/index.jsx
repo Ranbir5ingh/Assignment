@@ -166,7 +166,7 @@ const Dashboard = () => {
 
       <main className="flex-1 container mx-auto px-4 pt-20 pb-6 md:pt-24 md:pb-8">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
-          <Card>
+          <Card className="shadow-none">
             <CardHeader className="pb-2 md:pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Total Tasks
@@ -179,7 +179,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="shadow-none">
             <CardHeader className="pb-2 md:pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Completed
@@ -192,7 +192,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="col-span-2 md:col-span-1">
+          <Card className="col-span-2 md:col-span-1 shadow-none">
             <CardHeader className="pb-2 md:pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Pending
@@ -206,7 +206,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <Card>
+        <Card className="shadow-none">
           <CardHeader className="p-4 md:p-6">
             <CardTitle className="text-lg md:text-xl">My Tasks</CardTitle>
           </CardHeader>
