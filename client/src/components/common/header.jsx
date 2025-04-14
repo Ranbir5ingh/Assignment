@@ -56,7 +56,7 @@ export default function Header() {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="text-sm font-medium">{user?.name}</p>
+                    <p className="text-sm font-medium">{user?.userName}</p>
                     <p className="text-xs text-muted-foreground">
                       {user?.email}
                     </p>
@@ -78,7 +78,7 @@ export default function Header() {
         {/* Desktop view */}
         <div className="hidden md:flex items-center gap-4">
           <div className="text-right mr-2">
-            <p className="font-medium">{user?.name}</p>
+            <p className="font-medium">{user?.userName}</p>
             <p className="text-sm text-muted-foreground">{user?.email}</p>
           </div>
           <DropdownMenu>
